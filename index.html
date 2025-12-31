@@ -405,7 +405,7 @@
         
         // Create stars (reduced for performance, further reduced on mobile)
         const starsContainer = document.getElementById('stars');
-        const starCount = isMobile ? 30 : 100;
+        const starCount = isMobile ? 20 : 50;
         for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
@@ -434,9 +434,11 @@
             }, 3000);
         }
 
-        // Create sparkles periodically (reduced frequency, much slower on mobile)
-        const sparkleInterval = isMobile ? 1000 : 400;
+        // Create sparkles periodically (much slower, disabled on mobile)
+        if (!isMobile) {
+        const sparkleInterval = 600;
         setInterval(createSparkle, sparkleInterval);
+        }
 
         // Button interaction sound/effect
         const celebrateBtn = document.getElementById('celebrateBtn');
