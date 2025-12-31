@@ -405,7 +405,7 @@
         
         // Create stars (reduced for performance, further reduced on mobile)
         const starsContainer = document.getElementById('stars');
-        const starCount = isMobile ? 40 : 100;
+        const starCount = isMobile ? 30 : 100;
         for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
@@ -434,8 +434,8 @@
             }, 3000);
         }
 
-        // Create sparkles periodically (reduced frequency, slower on mobile)
-        const sparkleInterval = isMobile ? 800 : 400;
+        // Create sparkles periodically (reduced frequency, much slower on mobile)
+        const sparkleInterval = isMobile ? 1000 : 400;
         setInterval(createSparkle, sparkleInterval);
 
         // Button interaction sound/effect
@@ -448,13 +448,14 @@
             }, 150);
         });
 
-        // Add more sparkles on hover (fewer on mobile)
+        // Add more sparkles on hover (skip on mobile for performance)
+        if (!isMobile) {
         celebrateBtn.addEventListener('mouseenter', function() {
-            const sparkleCount = isMobile ? 3 : 10;
-            for (let i = 0; i < sparkleCount; i++) {
+            for (let i = 0; i < 10; i++) {
                 setTimeout(createSparkle, i * 50);
             }
         });
+        }
 
         // Music control
         const bgMusic = document.getElementById('bgMusic');
