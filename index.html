@@ -400,9 +400,9 @@
     </div>
 
     <script>
-        // Create stars
+        // Create stars (reduced for performance)
         const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             const size = Math.random() * 3 + 1;
@@ -430,8 +430,8 @@
             }, 3000);
         }
 
-        // Create sparkles periodically
-        setInterval(createSparkle, 200);
+        // Create sparkles periodically (reduced frequency for performance)
+        setInterval(createSparkle, 400);
 
         // Button interaction sound/effect
         const celebrateBtn = document.getElementById('celebrateBtn');
